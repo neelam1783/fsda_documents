@@ -1,0 +1,56 @@
+Data Pulling from AWS Storage
+
+First Loging to you account 
+
+search for s3 storage 
+create bucket 
+Give Bucket name and leave rest as it is 
+and click on create bucket 
+now go inside the bucket and click on the upload file
+here you will upload the data in your bucket
+
+click on the file and copy the s3 url
+
+not goto snowflake and in database section select the table and click on stages
+
+create stages select aws
+give any name in name section - aws_test2
+
+paste the se3 url in url section 
+
+to get the security credential of aws - click your name in top right corner
+click security credential
+
+generate your access key 
+then put these credential in snowflake staging section 
+and finish
+
+now goto snowflake and 
+( name given during staging) - @AWS_TEST
+
+COPY INTO table_name FROM @AWS_TEST 
+FILE_FORMAT = (TYPE = CSV FIELD_DELIMITER = ',' SKIP_HEADER = 1)
+PURGE = TRUE;
+
+
+========================================================================
+
+
+how to pull data from microsoft azure in snowflake
+
+1) create a resource 
+give a stroge account name then next next next... 
+
+deployment is in progress
+
+now goto storage and click upload and upload blob - upload you file here.
+
+get the link and click on shared access token
+now genereate sas token 
+
+go and paste it in the datavase staging link
+
+and now paste this command and run your query
+COPY INTO table_name FROM @AWS_TEST 
+FILE_FORMAT = (TYPE = CSV FIELD_DELIMITER = ',' SKIP_HEADER = 1)
+PURGE = TRUE;
